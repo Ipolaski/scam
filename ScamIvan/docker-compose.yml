@@ -1,0 +1,15 @@
+services:
+    panamascam:
+        container_name: PanamaScam
+        image: ${DOCKER_REGISTRY-}panamascam
+        build:
+            context: .
+            dockerfile: ScamIvan/Dockerfile
+        deploy: 
+            restart_policy:
+                condition: on-failure
+                delay: 15s
+                max_attempts: 3
+        
+    # volumes:
+    #  - D:\Projects\ScamPanov\ScamIvan\Build\Release\net8.0\App.config:/app/ScamIvan.dll.config
